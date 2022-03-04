@@ -3,7 +3,6 @@
  */
 package edu.uvg.structures;
 
-import jdk.internal.org.objectweb.asm.tree.MultiANewArrayInsnNode;
 
 /**
  * @author MAAG
@@ -115,8 +114,28 @@ public class DoubleLinkedList<T> implements IList<T> {
 
 	@Override
 	public T DeleteAtStart() {
-		// TODO Auto-generated method stub
-		return null;
+		if (!IsEmpty()) {
+			
+			if (Count() == 1) {
+				DoubleNode<T> temp = start;
+				start = null;
+				end = null;
+				count--;
+				return temp.getValue();
+			} else {
+				DoubleNode<T> temp = start;
+				end.setNext(temp.getNext());
+				temp.getNext().setPrevious(end);
+				start = temp.getNext();
+				count--;
+				return temp.getValue();
+			}
+			
+		} else {
+			return null;
+		}
+		
+		
 	}
 
 	@Override

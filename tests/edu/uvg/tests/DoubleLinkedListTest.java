@@ -73,5 +73,26 @@ class DoubleLinkedListTest {
 		assertEquals(testList.Count(), 1);
 		assertEquals(testList.Get(0), "Hola");
 	}
+	
+	@Test
+	void DeleteAtStartNonEmptyOnlyOneElementListtest() {
+		DoubleLinkedList<String> testList = new DoubleLinkedList<String>();
+		testList.InsertAtStart("Hola");
+		assertEquals(testList.Count(), 1);
+		assertEquals(testList.DeleteAtStart(), "Hola");
+		assertEquals(testList.Count(), 0);
+	}
+	
+	@Test
+	void DeleteAtStartNonEmptyManyElementsListtest() {
+		DoubleLinkedList<String> testList = new DoubleLinkedList<String>();
+		testList.InsertAtStart("Hola");
+		testList.InsertAtStart("Mundo");
+		assertEquals(testList.Count(), 2);
+		assertEquals(testList.DeleteAtStart(), "Mundo");
+		assertEquals(testList.Count(), 1);
+		assertEquals(testList.DeleteAtStart(), "Hola");
+		assertEquals(testList.Count(), 0);
+	}
 
 }
