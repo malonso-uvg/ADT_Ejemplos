@@ -86,7 +86,7 @@ public class BinarySearchTree<K, V> implements IBinarySearchTree<K, V> {
 							
 						}
 						
-						//Assginig the new parentes
+						//Assginig the new parents
 						if (leftOfTheRights.getRight() != null)
 							leftOfTheRights.getRight().setParent(leftOfTheRights);
 						
@@ -285,6 +285,7 @@ public class BinarySearchTree<K, V> implements IBinarySearchTree<K, V> {
 				return internalDelete(actual.getRight(), id, false);
 			} else { //actual is the node to be deleted
 				
+				//The actual node is a leaft
 				if ( (actual.getLeft() == null) && (actual.getRight() == null) ) { // If is a leaft
 					V tempValue = actual.getValue();
 					if (isLeft) {
@@ -334,6 +335,7 @@ public class BinarySearchTree<K, V> implements IBinarySearchTree<K, V> {
 						if (leftOfTheRights.getRight() != null)
 							leftOfTheRights.getRight().setParent(leftOfTheRights);
 						
+						//Assigning new son to the parent
 						leftOfTheRights.setParent(actual.getParent());
 						if (isLeft) {
 							leftOfTheRights.getParent().setLeft(leftOfTheRights);
